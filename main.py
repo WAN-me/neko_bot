@@ -320,12 +320,9 @@ TOKEN = ""
 
 bot = telebot.TeleBot(TOKEN)
 
-
 @bot.message_handler(content_types=['text'])
 def get_text_messages(msg):
-    print(msg.json)
-    text = msg.json.get('text','0')
-    if text[0] in ['.', '/', '\\', '!', '_']:
+    if msg == '/cat':
         url = random.choice(data)
         if random.randint(1,100) > 50:
             _send(msg.chat.id, f'<a href="{url}">Держи, милый</a>')
